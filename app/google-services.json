@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "867318632208",
+    "firebase_url": "https://pace2d-c83fa.firebaseio.com",
+    "project_id": "pace2d-c83fa",
+    "storage_bucket": "pace2d-c83fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867318632208:android:fa1d8fc4537173b7",
+        "android_client_info": {
+          "package_name": "app.kelvinkamau.pace2d"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "867318632208-nmo9lcran1dkk5ag1k6rk94st3737d0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.kelvinkamau.pace2d",
+            "certificate_hash": "3a9bf79ecc35a9f2f5095442a98c22cf17e761ad"
+          }
+        },
+        {
+          "client_id": "867318632208-q37ct9q6a6qm7uffoairqe545bu1gg7i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmI87b-iBTCFLZ5I6BDleHRLgVQkDYNZk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "867318632208-q37ct9q6a6qm7uffoairqe545bu1gg7i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
