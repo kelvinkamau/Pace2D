@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //todo prevent rotation
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         Constants.SCREEN_WIDTH = dm.widthPixels;
@@ -31,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(new GamePanel(this));
 
     }
-    public void playMusic(){
+    /*public void playMusic(){
         MediaPlayer player = MediaPlayer.create(this, R.raw.music);
         player.setLooping(true);
         player.start();
-    }
+    }*/
     public void setTypeface(){
         Typeface tf = Typeface.createFromAsset(this.getAssets(), "fonts/ocr.ttf");
     }
