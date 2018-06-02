@@ -10,8 +10,6 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import java.util.concurrent.locks.Condition;
-
 /*
  * Created by Kelvin Kamau on 01/05/2018
  */
@@ -32,11 +30,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         super(context);
         getHolder().addCallback(this);
         thread = new MainThread(getHolder(), this);
-        player = new RectPlayer(new Rect(Constants.SCREEN_HEIGHT/500, Constants.SCREEN_HEIGHT/500, Constants.SCREEN_HEIGHT/17, Constants.SCREEN_HEIGHT/17), Color.rgb(255, 119, 0));
+        player = new RectPlayer(new Rect(Constants.SCREEN_HEIGHT / 500, Constants.SCREEN_HEIGHT / 500, Constants.SCREEN_HEIGHT / 17, Constants.SCREEN_HEIGHT / 17), Color.rgb(255, 119, 0));
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, 3 * Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         // obstacleManager = new ObstacleManager(160, 280, 60, Color.BLACK);
-        obstacleManager = new ObstacleManager(Constants.SCREEN_WIDTH/5, Constants.SCREEN_HEIGHT/6, Constants.SCREEN_HEIGHT/20, Color.BLACK);
+        obstacleManager = new ObstacleManager(Constants.SCREEN_WIDTH / 5, Constants.SCREEN_HEIGHT / 4, Constants.SCREEN_HEIGHT / 20, Color.BLACK);
 
         setFocusable(true);
     }
@@ -45,9 +43,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         playerPoint = new Point(Constants.SCREEN_WIDTH / 2, 3 * Constants.SCREEN_HEIGHT / 4);
         player.update(playerPoint);
         //  obstacleManager = new ObstacleManager(160, 280, 60, Color.BLACK);
-        //  obstacleManager = new ObstacleManager(96, 168, 36, Color.BLACK);
-        obstacleManager = new ObstacleManager(Constants.SCREEN_WIDTH/5, Constants.SCREEN_HEIGHT/6, Constants.SCREEN_HEIGHT/20, Color.BLACK);
-
+        obstacleManager = new ObstacleManager(Constants.SCREEN_WIDTH / 5, Constants.SCREEN_HEIGHT / 4, Constants.SCREEN_HEIGHT / 20, Color.BLACK);
 
         movingPlayer = false;
     }
@@ -86,7 +82,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     movingPlayer = true;
                 if (gameOver && System.currentTimeMillis() - gameOverTime >= 2000) {
                     reset();
-
                     gameOver = false;
                 }
                 break;
@@ -135,6 +130,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             }
         }
     }
+
     private void drawText(Canvas canvas, Paint paint, String text) {
         paint.setTextAlign(Paint.Align.LEFT);
         canvas.getClipBounds(r);

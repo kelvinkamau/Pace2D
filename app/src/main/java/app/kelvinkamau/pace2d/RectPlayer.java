@@ -1,22 +1,26 @@
 package app.kelvinkamau.pace2d;
+
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
+
 /*
  * Created by Kelvin Kamau on 01/05/2018
  */
-public class RectPlayer implements GameObject  {
+public class RectPlayer implements GameObject {
     private Rect rectangle;
     private int color;
-    public Rect getRectangle(){
+
+    public Rect getRectangle() {
         return rectangle;
     }
 
-    public RectPlayer(Rect rectangle, int color){
+    public RectPlayer(Rect rectangle, int color) {
         this.rectangle = rectangle;
-        this.color =color;
+        this.color = color;
     }
+
     @Override
     public void draw(Canvas canvas) {
         Paint paint = new Paint();
@@ -29,7 +33,7 @@ public class RectPlayer implements GameObject  {
 
     }
 
-    public void update(Point point){
-        rectangle.set(point.x - rectangle.width()/2, point.y - rectangle.height()/2, point.x + rectangle.width()/2 ,point.y + rectangle.height()/2);
+    public void update(Point point) {
+        rectangle.set(point.x - rectangle.width() / 2, point.y - rectangle.height() / 2, point.x + rectangle.width() / 2, point.y + rectangle.height() / 2);
     }
 }

@@ -2,10 +2,11 @@ package app.kelvinkamau.pace2d;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
+
 /*
  * Created by Kelvin Kamau on 01/05/2018
  */
-public class MainThread extends  Thread {
+public class MainThread extends Thread {
     public static final int MAX_FPS = 30;
     private double averageFPS;
     private SurfaceHolder surfaceHolder;
@@ -13,58 +14,59 @@ public class MainThread extends  Thread {
     private boolean running;
     public static Canvas canvas;
 
-    public void setRunning(boolean running){
+    public void setRunning(boolean running) {
         this.running = running;
     }
 
-    public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel){
+    public MainThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gamePanel = gamePanel;
     }
 
     @Override
-    public void run(){
+    public void run() {
         long startTime;
-        long timeMillis = 1000/MAX_FPS;
+        long timeMillis = 1000 / MAX_FPS;
         long waitTime;
         int frameCount = 0;
         long totalTime = 0;
-        long targetTime = 1000/MAX_FPS;
+        long targetTime = 1000 / MAX_FPS;
 
-        while (running){
+        while (running) {
             startTime = System.nanoTime();
             canvas = null;
 
-            try{
+            try {
                 canvas = this.surfaceHolder.lockCanvas();
-                synchronized(surfaceHolder){
+                synchronized (surfaceHolder) {
                     this.gamePanel.update();
-                    this.gamePanel.draw(canvas);}
-            }catch (Exception e){
+                    this.gamePanel.draw(canvas);
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
-            }finally {
-                if(canvas != null){
-                    try{
+            } finally {
+                if (canvas != null) {
+                    try {
                         surfaceHolder.unlockCanvasAndPost(canvas);
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
             }
-            timeMillis = (System.nanoTime() - startTime)/1000000;
+            timeMillis = (System.nanoTime() - startTime) / 1000000;
             waitTime = targetTime - timeMillis;
             try {
-                if(waitTime > 0){
+                if (waitTime > 0) {
                     this.sleep(waitTime);
                 }
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             totalTime += System.nanoTime() - startTime;
-            frameCount ++;
-            if(frameCount == MAX_FPS){
-                averageFPS = 1000/((totalTime/frameCount)/1000000);
+            frameCount++;
+            if (frameCount == MAX_FPS) {
+                averageFPS = 1000 / ((totalTime / frameCount) / 1000000);
                 frameCount = 0;
                 totalTime = 0;
                 System.out.println(averageFPS);
